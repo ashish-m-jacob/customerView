@@ -14,7 +14,6 @@ const Home = () => {
 
   useEffect(() => {
     setCurrentItems(items[selectedCategory]);
-    console.log(currentItems.img[0]);
   }, [selectedCategory]);
 
   const categories = ["Burger", "Pizza", "Drink", "French fries", "Veggies"];
@@ -161,7 +160,13 @@ const Home = () => {
             return (
               <div className={styles.item} key={index}>
                 <div className={styles.itemImgContainer}>
-                  <img src={currentItems.img[index]} alt="itemImg" srcset="" />
+                  {currentItems.img && (
+                    <img
+                      src={currentItems.img[index]}
+                      alt="itemImg"
+                      srcset=""
+                    />
+                  )}
                 </div>
                 <div className={styles.infoContainer}>
                   <h1>{item}</h1>
