@@ -156,26 +156,35 @@ const Home = () => {
           <h1>{selectedCategory}</h1>
         </div>
         <div className={styles.items}>
-          {currentItems?.name.map((item, index) => {
-            return (
-              <div className={styles.item} key={index}>
-                <div className={styles.itemImgContainer}>
-                  {currentItems.img && (
-                    <img
-                      src={currentItems.img[index]}
-                      alt="itemImg"
-                      srcset=""
-                    />
-                  )}
+          {currentItems ? (
+            currentItems.name.map((item, index) => {
+              return (
+                <div className={styles.item} key={index}>
+                  <div className={styles.itemImgContainer}>
+                    {currentItems.img && (
+                      <img
+                        src={currentItems.img[index]}
+                        alt="itemImg"
+                        srcset=""
+                      />
+                    )}
+                  </div>
+                  <div className={styles.infoContainer}>
+                    <h1>{item}</h1>
+                    <p>₹ {currentItems.price[index]}</p>
+                  </div>
                 </div>
-                <div className={styles.infoContainer}>
-                  <h1>{item}</h1>
-                  <p>₹ {currentItems.price[index]}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <h1>Please choose a category to view items</h1>
+          )}
         </div>
+      </div>
+      <div className={styles.buttonContainer}>
+        <button type="button" className={styles.nextButton}>
+          Next
+        </button>
       </div>
     </div>
   );
