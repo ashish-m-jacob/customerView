@@ -1,0 +1,37 @@
+.greeting {
+  margin-bottom: 0.7vh;
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.instruction {
+  font-size: 16px;
+}
+
+.searchContainer {
+  margin-top: 2vh;
+  background-color: #f0f5f3;
+  padding: 1vh;
+  padding-left: 2vh;
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  border-radius: 0.5rem;
+  height: 5vh;
+}
+
+.searchContainer img {
+  width: 24px;
+}
+
+.searchContainer input[type="text"] {
+  width: 92vw;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  height: 100%;
+}
+
+.searchContainer input[type="text"]:focus {
+  outline: none;
+}

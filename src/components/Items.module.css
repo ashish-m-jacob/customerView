@@ -1,0 +1,19 @@
+/* Items  */
+
+.itemContainer {
+  height: 60vh;
+  margin-top: 3vh;
+}
+
+.currentCategory {
+  height: 7%;
+}
+
+.items {
+  margin-top: 1vh;
+
+  height: 93%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
