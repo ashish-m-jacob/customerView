@@ -1,0 +1,79 @@
+.orderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-top: 5vh;
+}
+
+.order {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  height: 13vh;
+  margin-bottom: 2vh;
+}
+
+.pictureContainer {
+  background-color: #d9d9d9;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.pictureContainer img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+
+.details {
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.titleAndClose {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.3rem;
+  color: white;
+  background-color: #e04444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  padding: 0.2rem;
+}
+
+.qtyContainer {
+  display: flex;
+  gap: 1.5vh;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.changeQty {
+  width: 7vw;
+  height: 7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  border: 0.1rem solid black;
+  border-radius: 0.3rem;
+  font-size: 1.6vh;
+}

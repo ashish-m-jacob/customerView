@@ -14,7 +14,7 @@ const Items = ({ selectedCategory, currentItems, setCurrentItems }) => {
 
     setCurrentItems(items);
 
-    console.log(currentItems);
+    localStorage.setItem(selectedCategory, JSON.stringify(items));
   };
 
   const handleMinus = (item, index) => {
@@ -25,6 +25,8 @@ const Items = ({ selectedCategory, currentItems, setCurrentItems }) => {
     items[index] = { ...items[index], qty: newQty };
 
     setCurrentItems(items);
+
+    localStorage.setItem(selectedCategory, JSON.stringify(items));
   };
 
   return (
@@ -35,21 +37,17 @@ const Items = ({ selectedCategory, currentItems, setCurrentItems }) => {
             <h1>{selectedCategory}</h1>
           </div>
           <div className={styles.items}>
-            {currentItems.length === 0 ? (
-              <h1>Please select a category to continue</h1>
-            ) : (
-              currentItems.map((item, index) => {
-                return (
-                  <ItemCard
-                    item={item}
-                    index={index}
-                    handleAdd={handleAdd}
-                    handleMinus={handleMinus}
-                    key={index}
-                  />
-                );
-              })
-            )}
+            {currentItems.map((item, index) => {
+              return (
+                <ItemCard
+                  item={item}
+                  index={index}
+                  handleAdd={handleAdd}
+                  handleMinus={handleMinus}
+                  key={index}
+                />
+              );
+            })}
           </div>
         </div>
       )}

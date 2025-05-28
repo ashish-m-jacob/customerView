@@ -16,36 +16,41 @@ import veggies from "../assets/veggies.png";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [order, setOrder] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Burger");
   const [currentItems, setCurrentItems] = useState([]);
 
   const categories = ["Burger", "Pizza", "Drink", "French fries", "Veggies"];
   const images = [burger, pizza, drink, frenchFries, veggies];
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     const handleSelectCategory = async () => {
-      try {
-        const res = await fetchFoodData(selectedCategory);
-        setCurrentItems(
-          res.data.map((item) => {
-            return {
-              ...item,
-              qty: 0, // Initialize quantity to 0
-            };
-          })
-        );
-      } catch (err) {
-        console.log(err);
+      if (localStorage.getItem(selectedCategory) === null) {
+        try {
+          const res = await fetchFoodData(selectedCategory);
+          setCurrentItems(
+            res.data.map((item) => {
+              return {
+                ...item,
+                qty: 0, // Initialize quantity to 0
+              };
+            })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        setCurrentItems(JSON.parse(localStorage.getItem(selectedCategory)));
       }
     };
-
     handleSelectCategory();
   }, [selectedCategory]);
 
   const updateCurrentItems = (items) => {
     setCurrentItems(items);
   };
+
   const goNext = () => {
     navigate("/confirm-order");
   };

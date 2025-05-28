@@ -1,0 +1,10 @@
+.phoneContainer {
+  padding: 5vw;
+  font-family: "Roboto", sans-serif;
+}
+
+.cookingInstructions {
+  color: #8c7b7b;
+  border-bottom: 3px dotted #c4c4c4;
+  padding-bottom: 1px;
+}
