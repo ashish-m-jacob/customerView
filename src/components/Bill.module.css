@@ -1,0 +1,39 @@
+.billContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 244, 143, 0.14);
+  margin-top: 2vh;
+  gap: 1.5vh;
+  padding: 1vh;
+}
+
+.itemTotal,
+.deliveryCharge,
+.taxes,
+.grandTotal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemTotal,
+.deliveryCharge,
+.taxes {
+  color: #817070;
+}
+
+.deliveryCharge span {
+  border-bottom: 3px dotted #817070;
+}
+.grandTotal {
+  margin-top: 2vh;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+hr {
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 5px;
+  background-color: #e5e5e5;
+}

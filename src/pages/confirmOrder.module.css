@@ -1,6 +1,6 @@
 .phoneContainer {
-  padding: 5vw;
   font-family: "Roboto", sans-serif;
+  padding: 5vw;
 }
 
 .cookingInstructions {
@@ -10,6 +10,7 @@
 }
 
 .dineInTakeout {
+  padding: 5vw;
   display: flex;
   justify-content: space-evenly;
   margin-top: 4vh;

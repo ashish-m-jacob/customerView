@@ -8,9 +8,9 @@ const Order = () => {
 
   return (
     <div className={styles.orderContainer}>
-      {order.map((orderItem) => {
+      {order.map((orderItem, index) => {
         return (
-          <div className={styles.order}>
+          <div className={styles.order} key={index}>
             <div className={styles.pictureContainer}>
               <img src={orderItem.img} alt="" srcset="" />
             </div>
