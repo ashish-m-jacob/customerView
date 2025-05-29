@@ -8,3 +8,19 @@
   border-bottom: 3px dotted #c4c4c4;
   padding-bottom: 1px;
 }
+
+.dineInTakeout {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 4vh;
+  padding: 1vh;
+  background-color: #e4e4e4;
+  border-radius: 2rem;
+}
+
+.dineInTakeout p {
+  width: 40%;
+  text-align: center;
+  padding: 2vh;
+  border-radius: 1.6rem;
+}

@@ -5,6 +5,8 @@ import Header from "../components/Header";
 import Order from "../components/Order";
 
 const ConfirmOrder = () => {
+  const [typeOfOrder, setTypeOfOrder] = useState("Dine in");
+
   useEffect(() => {
     let orderItems = [];
     const categories = ["Burger", "Pizza", "Drink", "French fries", "Veggies"];
@@ -31,6 +33,26 @@ const ConfirmOrder = () => {
       <span className={styles.cookingInstructions}>
         Add cooking instructions (optional)
       </span>
+      <div className={styles.dineInTakeout}>
+        <p
+          style={{
+            backgroundColor:
+              typeOfOrder === "Dine in" ? "white" : "transparent",
+          }}
+          onClick={() => setTypeOfOrder("Dine in")}
+        >
+          Dine in
+        </p>
+        <p
+          style={{
+            backgroundColor:
+              typeOfOrder === "Take Away" ? "white" : "transparent",
+          }}
+          onClick={() => setTypeOfOrder("Take Away")}
+        >
+          Take Away
+        </p>
+      </div>
     </div>
   );
 };
