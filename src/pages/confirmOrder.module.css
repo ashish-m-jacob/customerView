@@ -16,12 +16,12 @@
   margin-top: 4vh;
   padding: 1vh;
   background-color: #e4e4e4;
-  border-radius: 2rem;
+  border-radius: 2.5rem;
 }
 
 .dineInTakeout p {
   width: 40%;
   text-align: center;
-  padding: 2vh;
+  padding: 1.5vh;
   border-radius: 1.6rem;
 }

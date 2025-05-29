@@ -4,9 +4,14 @@ import styles from "./confirmOrder.module.css";
 import Header from "../components/Header";
 import Order from "../components/Order";
 import Bill from "../components/Bill";
+import Swipe from "../components/Swipe";
 
 const ConfirmOrder = () => {
   const [typeOfOrder, setTypeOfOrder] = useState("Dine in");
+  const [userName, setUserName] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+  const [delTime, setDelTime] = useState(0);
 
   useEffect(() => {
     let orderItems = [];
@@ -26,6 +31,21 @@ const ConfirmOrder = () => {
     localStorage.setItem("order", JSON.stringify(orderItems));
   }, []);
 
+  const updateUserName = (newUserName) => {
+    setUserName(newUserName);
+  };
+
+  const updateUserPhone = (newUserPhone) => {
+    setUserPhone(newUserPhone);
+  };
+
+  const updateUserAddress = (newAddress) => {
+    setUserAddress(newAddress);
+  };
+
+  const updateDelTime = (newDelTime) => {
+    setDelTime(newDelTime);
+  };
   return (
     <>
       <div className={styles.phoneContainer}>
@@ -55,8 +75,15 @@ const ConfirmOrder = () => {
           </p>
         </div>
       </div>
-      <Bill typeOfOrder={typeOfOrder} />
-      <hr />
+      <Bill
+        typeOfOrder={typeOfOrder}
+        delivTime={delTime}
+        setUserName={updateUserName}
+        setUserPhone={updateUserPhone}
+        setUserAddress={updateUserAddress}
+        setDelTime={updateDelTime}
+      />
+      <Swipe />
     </>
   );
 };

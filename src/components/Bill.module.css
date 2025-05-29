@@ -37,3 +37,55 @@ hr {
   height: 5px;
   background-color: #e5e5e5;
 }
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 1vh;
+  margin-top: 1vh;
+}
+
+.header p {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.details {
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type="text"] {
+  border: none;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.deliveryDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5vh;
+  gap: 1vh;
+}
+
+.delAddress,
+.delTime {
+  display: flex;
+  gap: 2vh;
+  align-items: center;
+}
+
+.delAddress img,
+.delTime img {
+  height: 1.2vh;
+  width: 1.2vh;
+}
+
+.addressContainer,
+.timeContainer {
+  display: flex;
+  gap: 1vh;
+}
