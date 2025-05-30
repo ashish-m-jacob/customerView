@@ -18,7 +18,7 @@ const Order = () => {
               <div className={styles.titleAndClose}>
                 <p className={styles.title}>{orderItem.name}</p>
                 <button type="button" className={styles.close}>
-                  x
+                  X
                 </button>
               </div>
               <div className={styles.price}>

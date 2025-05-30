@@ -22,6 +22,140 @@
 .dineInTakeout p {
   width: 40%;
   text-align: center;
-  padding: 1.5vh;
+  padding: 1.7vh;
   border-radius: 1.6rem;
+}
+
+.instructionsContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.blur {
+  height: 100%;
+  width: 100vw;
+  background-color: (255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.instructions {
+  position: absolute;
+  width: 100vw;
+  top: 9.5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  display: flex;
+  justify-content: center;
+}
+
+.closeButton button {
+  background-color: #282828;
+  color: white;
+  border: none;
+  height: 7vh;
+  width: 7vh;
+  padding: 0;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructionsBox {
+  height: 40vh;
+  background-color: #f0f5f3;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.instructionsTitle {
+  padding-left: 2vh;
+  padding-right: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  font-size: 24px;
+}
+.instructionsInput {
+  margin-left: 2vh;
+  margin-right: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  padding: 1.5vh;
+  height: 12vh;
+  background-color: white;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclaimer {
+  padding-left: 2vh;
+  padding-right: 2vh;
+  color: #6e6e6e;
+  font-size: 12px;
+}
+
+.instructionsInput textarea {
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+  text-align: left;
+  background-color: #f0f5f3;
+  border: 1px solid #c7c7c7;
+  resize: none;
+  border-radius: 0.4rem;
+  font-family: "Inter", sans-serif;
+}
+
+.instructionsInput textarea:focus {
+  outline: none;
+}
+
+.buttonsBox {
+  background-color: white;
+  display: flex;
+  padding: 1vh;
+  height: 6vh;
+  margin-top: 6.7vh;
+  justify-content: space-around;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+}
+
+.cancelDiv,
+.nextDiv {
+  width: 45vw;
+  display: flex;
+  justify-content: center;
+}
+
+.cancelDiv button {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #f0f5f3;
+  color: #505050;
+  font-size: 22px;
+}
+
+.nextDiv button {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #505050;
+  color: #f0f5f3;
+  font-size: 22px;
 }

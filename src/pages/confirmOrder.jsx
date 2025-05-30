@@ -12,6 +12,8 @@ const ConfirmOrder = () => {
   const [userPhone, setUserPhone] = useState("");
   const [userAddress, setUserAddress] = useState("");
   const [delTime, setDelTime] = useState(0);
+  const [instructions, setInstructions] = useState("");
+  const [isInstructionsSelected, setIsInstructionsSelected] = useState(false);
 
   useEffect(() => {
     let orderItems = [];
@@ -46,14 +48,75 @@ const ConfirmOrder = () => {
   const updateDelTime = (newDelTime) => {
     setDelTime(newDelTime);
   };
+
   return (
     <>
       <div className={styles.phoneContainer}>
         <Header />
         <Order />
-        <span className={styles.cookingInstructions}>
+        <span
+          className={styles.cookingInstructions}
+          onClick={() => {
+            setIsInstructionsSelected(true);
+          }}
+        >
           Add cooking instructions (optional)
         </span>
+        {isInstructionsSelected && (
+          <div className={styles.instructionsContainer}>
+            <div className={styles.blur}></div>
+            <div className={styles.instructions}>
+              <div className={styles.closeButton}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsInstructionsSelected(false);
+                    setInstructions("");
+                  }}
+                >
+                  X
+                </button>
+              </div>
+              <div className={styles.instructionsBox}>
+                <p className={styles.instructionsTitle}>
+                  Add Cooking Instructions
+                </p>
+                <div className={styles.instructionsInput}>
+                  <textarea
+                    onChange={(e) => {
+                      setInstructions(e.target.value);
+                    }}
+                  ></textarea>
+                </div>
+                <p className={styles.disclaimer}>
+                  The restaurant will try its best to follow your request.
+                  However, refunds or cancellations in this regard won’t be
+                  possible
+                </p>
+                <div className={styles.buttonsBox}>
+                  <div className={styles.cancelDiv}>
+                    <button
+                      type="button"
+                      className={styles.cancelButton}
+                      onClick={() => {
+                        setIsInstructionsSelected(false);
+                        setInstructions("");
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  <div className={styles.nextDiv}>
+                    <button type="button" className={styles.nextButton}>
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className={styles.dineInTakeout}>
           <p
             style={{
