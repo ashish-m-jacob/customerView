@@ -6,14 +6,30 @@ import Order from "../components/Order";
 import Bill from "../components/Bill";
 import Swipe from "../components/Swipe";
 
+import { sendOrder } from "../services";
+
+import { useNavigate } from "react-router-dom";
+
 const ConfirmOrder = () => {
-  const [typeOfOrder, setTypeOfOrder] = useState("Dine in");
+  const navigate = useNavigate();
+  //order of data for sending to database
   const [userName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userAddress, setUserAddress] = useState("");
-  const [delTime, setDelTime] = useState(0);
+  const [itemsArray, setItemsArray] = useState([]);
+  const [qtyArray, setQtyArray] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
+  const [taxes, setTaxes] = useState(0);
   const [instructions, setInstructions] = useState("");
+  const [typeOfOrder, setTypeOfOrder] = useState("Dine in");
+
+  //for UI
+  const [order, setOrder] = useState([]);
+  const [delTime, setDelTime] = useState(0);
   const [isInstructionsSelected, setIsInstructionsSelected] = useState(false);
+
+  const [orderTotal, setOrderTotal] = useState(0);
 
   useEffect(() => {
     let orderItems = [];
@@ -31,6 +47,16 @@ const ConfirmOrder = () => {
     });
 
     localStorage.setItem("order", JSON.stringify(orderItems));
+
+    let tempItems = [];
+    let tempQty = [];
+    orderItems.map((orderItem) => {
+      (tempItems = [...tempItems, orderItem.name]),
+        (tempQty = [...tempQty, orderItem.qty]);
+    });
+
+    setItemsArray(tempItems);
+    setQtyArray(tempQty);
   }, []);
 
   const updateUserName = (newUserName) => {
@@ -49,11 +75,76 @@ const ConfirmOrder = () => {
     setDelTime(newDelTime);
   };
 
+  const updateOrder = (newOrder) => {
+    setOrder(newOrder);
+
+    let tempItems = [];
+    let tempQty = [];
+
+    newOrder.map((orderItem) => {
+      (tempItems = [...tempItems, orderItem.name]),
+        (tempQty = [...tempQty, orderItem.qty]);
+    });
+
+    setItemsArray(tempItems);
+    setQtyArray(tempQty);
+  };
+
+  const updateTotalCost = (newCost) => {
+    setTotalCost(newCost);
+  };
+
+  const updateDeliveryCharge = (newDeliveryCharge) => {
+    setDeliveryCharge(newDeliveryCharge);
+  };
+
+  const updateTaxes = (newTaxes) => {
+    setTaxes(newTaxes);
+  };
+
+  const placeOrder = async () => {
+    try {
+      const res = await sendOrder(
+        userName,
+        userPhone,
+        userAddress,
+        itemsArray,
+        qtyArray,
+        totalCost,
+        deliveryCharge,
+        taxes,
+        instructions,
+        typeOfOrder
+      );
+
+      console.log(res.status);
+      if (res.status === 201) {
+        alert("Order placed successfully!");
+        //reset all data
+        const categories = [
+          "Burger",
+          "Pizza",
+          "Drink",
+          "French fries",
+          "Veggies",
+        ];
+        categories.map((category) => {
+          localStorage.removeItem(category);
+        });
+        localStorage.removeItem("order");
+
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div className={styles.phoneContainer}>
         <Header />
-        <Order />
+        <Order order={order} setOrder={updateOrder} />
         <span
           className={styles.cookingInstructions}
           onClick={() => {
@@ -85,6 +176,10 @@ const ConfirmOrder = () => {
                   <textarea
                     onChange={(e) => {
                       setInstructions(e.target.value);
+                      setCompleteOrder({
+                        ...completeOrder,
+                        cookingInstructions: e.target.value,
+                      });
                     }}
                   ></textarea>
                 </div>
@@ -107,7 +202,13 @@ const ConfirmOrder = () => {
                     </button>
                   </div>
                   <div className={styles.nextDiv}>
-                    <button type="button" className={styles.nextButton}>
+                    <button
+                      type="button"
+                      className={styles.nextButton}
+                      onClick={() => {
+                        setIsInstructionsSelected(false);
+                      }}
+                    >
                       Next
                     </button>
                   </div>
@@ -123,7 +224,9 @@ const ConfirmOrder = () => {
               backgroundColor:
                 typeOfOrder === "Dine in" ? "white" : "transparent",
             }}
-            onClick={() => setTypeOfOrder("Dine in")}
+            onClick={() => {
+              setTypeOfOrder("Dine in");
+            }}
           >
             Dine in
           </p>
@@ -132,7 +235,9 @@ const ConfirmOrder = () => {
               backgroundColor:
                 typeOfOrder === "Take Away" ? "white" : "transparent",
             }}
-            onClick={() => setTypeOfOrder("Take Away")}
+            onClick={() => {
+              setTypeOfOrder("Take Away");
+            }}
           >
             Take Away
           </p>
@@ -145,8 +250,21 @@ const ConfirmOrder = () => {
         setUserPhone={updateUserPhone}
         setUserAddress={updateUserAddress}
         setDelTime={updateDelTime}
+        order={order}
+        totalCost={totalCost}
+        setTotalCost={updateTotalCost}
+        deliveryCharge={deliveryCharge}
+        setDeliveryCharge={updateDeliveryCharge}
+        taxes={taxes}
+        setTaxes={updateTaxes}
       />
-      <Swipe />
+      <Swipe
+        name={userName}
+        phone={userPhone}
+        address={userAddress}
+        orderType={typeOfOrder}
+        placeOrder={placeOrder}
+      />
     </>
   );
 };

@@ -9,7 +9,6 @@ const Items = ({ selectedCategory, currentItems, setCurrentItems }) => {
     const items = [...currentItems];
 
     const newQty = item.qty + 1;
-    console.log(newQty);
     items[index] = { ...items[index], qty: newQty };
 
     setCurrentItems(items);
@@ -21,11 +20,9 @@ const Items = ({ selectedCategory, currentItems, setCurrentItems }) => {
     const items = [...currentItems];
 
     const newQty = item.qty - 1;
-    console.log(newQty);
     items[index] = { ...items[index], qty: newQty };
 
     setCurrentItems(items);
-
     localStorage.setItem(selectedCategory, JSON.stringify(items));
   };
 

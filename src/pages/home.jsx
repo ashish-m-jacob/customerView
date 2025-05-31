@@ -22,8 +22,6 @@ const Home = () => {
   const categories = ["Burger", "Pizza", "Drink", "French fries", "Veggies"];
   const images = [burger, pizza, drink, frenchFries, veggies];
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     const handleSelectCategory = async () => {
       if (localStorage.getItem(selectedCategory) === null) {
@@ -52,6 +50,7 @@ const Home = () => {
   };
 
   const goNext = () => {
+    localStorage.setItem("order", JSON.stringify(currentItems));
     navigate("/confirm-order");
   };
 
