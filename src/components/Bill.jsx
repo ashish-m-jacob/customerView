@@ -48,6 +48,7 @@ const Bill = ({
   return (
     <>
       <div className={styles.billContainer}>
+        {" "}
         <div className={styles.itemTotal}>
           <p>Item Total</p>
           <p>₹{orderTotal}.00</p>
@@ -60,7 +61,6 @@ const Bill = ({
           <p>Taxes</p>
           <p>₹{taxes}</p>
         </div>
-
         <div className={styles.grandTotal}>
           <p>Grand Total</p>
           <p>₹{totalCost}</p>
