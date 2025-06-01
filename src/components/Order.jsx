@@ -32,7 +32,7 @@ const Order = ({ order, setOrder }) => {
 
     setOrder(items);
 
-    localStorage.setItem("order", JSON.stringify(items));
+    localStorage.setItem("order", JSON.stringify(order));
 
     //setting data for home page to match order page
     const currentItems = JSON.parse(localStorage.getItem(orderItem.category));
@@ -63,7 +63,7 @@ const Order = ({ order, setOrder }) => {
 
   return (
     <div className={styles.orderContainer}>
-      {JSON.parse(localStorage.getItem("order")).map((orderItem, index) => {
+      {order.map((orderItem, index) => {
         return (
           <div className={styles.order} key={index}>
             <div className={styles.pictureContainer}>
