@@ -63,7 +63,7 @@ const Order = ({ order, setOrder }) => {
 
   return (
     <div className={styles.orderContainer}>
-      {order.map((orderItem, index) => {
+      {JSON.parse(localStorage.getItem("order")).map((orderItem, index) => {
         return (
           <div className={styles.order} key={index}>
             <div className={styles.pictureContainer}>
