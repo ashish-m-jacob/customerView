@@ -55,6 +55,8 @@ const ConfirmOrder = () => {
         (tempQty = [...tempQty, orderItem.qty]);
     });
 
+    //updating variables
+
     setItemsArray(tempItems);
     setQtyArray(tempQty);
   }, []);
