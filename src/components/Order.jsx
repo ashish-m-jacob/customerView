@@ -32,7 +32,7 @@ const Order = ({ order, setOrder }) => {
 
     setOrder(items);
 
-    localStorage.setItem("order", JSON.stringify(items));
+    localStorage.setItem("order", JSON.stringify(order));
 
     //setting data for home page to match order page
     const currentItems = JSON.parse(localStorage.getItem(orderItem.category));
