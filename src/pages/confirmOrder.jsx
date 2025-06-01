@@ -50,7 +50,7 @@ const ConfirmOrder = () => {
 
     let tempItems = [];
     let tempQty = [];
-    orderItems.map((orderItem) => {
+    JSON.parse(localStorage.getItem("order")).map((orderItem) => {
       (tempItems = [...tempItems, orderItem.name]),
         (tempQty = [...tempQty, orderItem.qty]);
     });
