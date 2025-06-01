@@ -24,7 +24,7 @@ const Order = ({ order, setOrder }) => {
   };
 
   const increaseQty = (orderItem, index) => {
-    const items = [...order];
+    const items = [JSON.parse(localStorage.getItem("order"))];
 
     const newQty = orderItem.qty + 1;
 
@@ -32,7 +32,7 @@ const Order = ({ order, setOrder }) => {
 
     setOrder(items);
 
-    localStorage.setItem("order", JSON.stringify(order));
+    localStorage.setItem("order", JSON.stringify(items));
 
     //setting data for home page to match order page
     const currentItems = JSON.parse(localStorage.getItem(orderItem.category));
