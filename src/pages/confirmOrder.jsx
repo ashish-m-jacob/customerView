@@ -105,7 +105,6 @@ const ConfirmOrder = () => {
   };
 
   const placeOrder = async () => {
-    // console.log(qtyArray);
     try {
       const res = await sendOrder(
         userName,
