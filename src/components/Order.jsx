@@ -3,6 +3,8 @@ import styles from "./Order.module.css";
 const Order = ({ order, setOrder }) => {
   useEffect(() => {
     setOrder(JSON.parse(localStorage.getItem("order")));
+
+    console.log(`Current order: ${order}`);
   }, []);
 
   const decreaseQty = (orderItem, index) => {
