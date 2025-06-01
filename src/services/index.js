@@ -20,16 +20,16 @@ export async function fetchFoodData(selectedCategory) {
 }
 
 export async function sendOrder(
-  userName,
-  userPhone,
-  userAddress,
-  itemsArray,
-  qtyArray,
-  totalCost,
+  name,
+  phone,
+  address,
+  orderItems,
+  orderQty,
+  itemTotal,
   deliveryCharge,
   taxes,
-  instructions,
-  typeOfOrder
+  cookingInstructions,
+  orderType
 ) {
   try {
     const res = await fetch(`${URL}/customer`, {
@@ -38,16 +38,16 @@ export async function sendOrder(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userName,
-        userPhone,
-        userAddress,
-        itemsArray,
-        qtyArray,
-        totalCost,
+        name,
+        phone,
+        address,
+        orderItems,
+        orderQty,
+        itemTotal,
         deliveryCharge,
         taxes,
-        instructions,
-        typeOfOrder,
+        cookingInstructions,
+        orderType,
       }),
     });
 
