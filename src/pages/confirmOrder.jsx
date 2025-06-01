@@ -29,8 +29,6 @@ const ConfirmOrder = () => {
   const [delTime, setDelTime] = useState(0);
   const [isInstructionsSelected, setIsInstructionsSelected] = useState(false);
 
-  const [orderTotal, setOrderTotal] = useState(0);
-
   useEffect(() => {
     let orderItems = [];
     const categories = ["Burger", "Pizza", "Drink", "French fries", "Veggies"];
@@ -47,6 +45,8 @@ const ConfirmOrder = () => {
     });
 
     localStorage.setItem("order", JSON.stringify(orderItems));
+
+    console.log(JSON.parse(localStorage.getItem("order")));
 
     let tempItems = [];
     let tempQty = [];
