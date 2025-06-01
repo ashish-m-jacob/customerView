@@ -24,7 +24,7 @@ const Order = ({ order, setOrder }) => {
   };
 
   const increaseQty = (orderItem, index) => {
-    const items = [JSON.parse(localStorage.getItem("order"))];
+    const items = JSON.parse(localStorage.getItem("order"));
 
     const newQty = orderItem.qty + 1;
 
