@@ -29,6 +29,8 @@ const Swipe = ({ name, phone, address, orderType, placeOrder }) => {
 
     //try pushing data to the db
     placeOrder();
+
+    return;
   };
   return (
     <div className={styles.swipeSection}>
@@ -49,7 +51,7 @@ const Swipe = ({ name, phone, address, orderType, placeOrder }) => {
               }
             }}
           >
-            <img src={arrowMark} alt="" srcset="" />
+            <img src={arrowMark} alt="" srcSet="" />
           </button>
         </div>
         <div className={styles.swipeText}>

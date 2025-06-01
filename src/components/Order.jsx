@@ -65,7 +65,7 @@ const Order = ({ order, setOrder }) => {
         return (
           <div className={styles.order} key={index}>
             <div className={styles.pictureContainer}>
-              <img src={orderItem.img} alt="" srcset="" />
+              <img src={orderItem.img} alt="" srcSet="" />
             </div>
             <div className={styles.details}>
               <div className={styles.titleAndClose}>
